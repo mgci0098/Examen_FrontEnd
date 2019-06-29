@@ -1,0 +1,140 @@
+<div class="tabelPachete">
+    <table mat-table [dataSource]="pachete" class="mat-elevation-z8">
+ 
+       <!--- Note that these columns can be defined in any order.
+             The actual rendered columns are set as a property on the row definition" -->
+    
+       <!-- taraOrigine Column -->
+       <ng-container matColumnDef="taraOrigine">
+          <th mat-header-cell *matHeaderCellDef> TaraOrigine </th>
+          <td mat-cell *matCellDef="let element"> {{element.taraOrigine}} </td>
+       </ng-container>
+    
+       <!-- denumireExpeditor Column -->
+       <ng-container matColumnDef="denumireExpeditor">
+          <th mat-header-cell *matHeaderCellDef> DenumireExpeditor </th>
+          <td mat-cell *matCellDef="let element" (click)="getPackByExpeditor(element.denumireExpeditor)"> {{element.denumireExpeditor}} </td>
+       </ng-container>
+ 
+       <!-- taraDestinatie Column -->
+       <ng-container matColumnDef="taraDestinatie">
+          <th mat-header-cell *matHeaderCellDef> TaraDestinatie </th>
+          <td mat-cell *matCellDef="let element"> {{element.taraDestinatie}} </td>
+       </ng-container>
+ 
+       <!-- denumireDestinatar Column -->
+       <ng-container matColumnDef="denumireDestinatar">
+          <th mat-header-cell *matHeaderCellDef> DenumireDestinatar </th>
+          <td mat-cell *matCellDef="let element"> {{element.denumireDestinatar}} </td>
+       </ng-container>
+
+ 
+       <!-- adresaDestinatar Column -->
+       <ng-container matColumnDef="adresaDestinatar">
+        <th mat-header-cell *matHeaderCellDef> AdresaDestinatar </th>
+        <td mat-cell *matCellDef="let element"> {{element.adresaDestinatar}} </td>
+     </ng-container>
+
+      
+       <!-- cost Column -->
+       <ng-container matColumnDef="cost">
+        <th mat-header-cell *matHeaderCellDef> Cost </th>
+        <td mat-cell *matCellDef="let element"> {{element.cost}} </td>
+     </ng-container>
+
+      
+       <!-- codTracking Column -->
+       <ng-container matColumnDef="codTracking">
+        <th mat-header-cell *matHeaderCellDef> CodTracking </th>
+        <td mat-cell *matCellDef="let element"> {{element.codTracking}} </td>
+     </ng-container>
+
+
+       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+ </div>
+ 
+
+ <div>
+   <hr>
+   <span> Zona afisare pachete expediate de un anumit expeditor</span>
+ </div>
+
+ <div>
+   <form class="filter-form">
+     <mat-form-field class="filter-full-width">
+       <input matInput placeholder="Filter String" value="Filter" #filter>
+     </mat-form-field>
+   </form>
+   <button id="filter" (click)="getPackByExpeditor(filter.value)">
+     <span>Filtreaza</span>
+   </button>
+ </div>
+
+
+
+ <div class="tabelHistoryPacks">
+    <table mat-table [dataSource]="history" class="mat-elevation-z8">
+ 
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+       
+         <!-- taraOrigine Column -->
+         <ng-container matColumnDef="taraOrigine">
+            <th mat-header-cell *matHeaderCellDef> TaraOrigine </th>
+            <td mat-cell *matCellDef="let element"> {{element.taraOrigine}} </td>
+         </ng-container>
+      
+         <!-- denumireExpeditor Column -->
+         <ng-container matColumnDef="denumireExpeditor">
+            <th mat-header-cell *matHeaderCellDef> Denumire Expeditor </th>
+            <td mat-cell *matCellDef="let element"> {{element.denumireExpeditor}} </td>
+         </ng-container>
+   
+         <!-- taraDestinatie Column -->
+         <ng-container matColumnDef="taraDestinatie">
+            <th mat-header-cell *matHeaderCellDef> TaraDestinatie </th>
+            <td mat-cell *matCellDef="let element"> {{element.taraDestinatie}} </td>
+         </ng-container>
+   
+         <!-- denumireDestinatar Column -->
+         <ng-container matColumnDef="denumireDestinatar">
+            <th mat-header-cell *matHeaderCellDef> DenumireDestinatar </th>
+            <td mat-cell *matCellDef="let element"> {{element.denumireDestinatar}} </td>
+         </ng-container>
+  
+   
+         <!-- adresaDestinatar Column -->
+         <ng-container matColumnDef="adresaDestinatar">
+          <th mat-header-cell *matHeaderCellDef> AdresaDestinatar </th>
+          <td mat-cell *matCellDef="let element"> {{element.adresaDestinatar}} </td>
+       </ng-container>
+  
+        
+         <!-- cost Column -->
+         <ng-container matColumnDef="cost">
+          <th mat-header-cell *matHeaderCellDef> Cost </th>
+          <td mat-cell *matCellDef="let element"> {{element.cost}} </td>
+       </ng-container>
+  
+        
+         <!-- codTracking Column -->
+         <ng-container matColumnDef="codTracking">
+          <th mat-header-cell *matHeaderCellDef> CodTracking </th>
+          <td mat-cell *matCellDef="let element"> {{element.codTracking}} </td>
+       </ng-container>
+ 
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+ </div>
+ 
+ 
+ <div>
+     <button id="goBack" (click)="goBack()">
+        <mat-icon>home</mat-icon>
+        <span>Go Back</span>
+     </button>
+  </div>
+ 
